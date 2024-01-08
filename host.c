@@ -193,8 +193,7 @@ int main()
 
 	int z,err =0;
 	if(NI_dpubuffers != DPU_dpubuffers) { err = 1; }
-	for(z=0;z<BUFFER_SIZE_DPU && err == 0;++z){if(cryptedDPU[z] != cryptedNI[z]){ err = 1; }}
-	printf("%02X\t%02X\n",cryptedDPU[12],cryptedNI[12]);
+	else{ for(z=0;z<BUFFER_SIZE_DPU && err == 0;++z){if(cryptedDPU[z] != cryptedNI[z]){ err = 1; }} }
 	
 	if(err==0){ printf("[\033[1;32mOK\033[0m] %d MB encrypted\n",offHOST/(1024*1024)); }
 	else{ printf("[\033[1;31mERROR\033[0m] Crypted buffers are NOT equals: z=%d\n",z);printf("OFF DPU: %d OFF HOST: %d\n",offDPU,offHOST); }
